@@ -71,7 +71,7 @@ public class EightQueens extends Application{
 
     public int findPosition(int k){
         int start = queens[k] + 1;
-
+        ///TODO loop goes backwards?
         for (int j = start; j < SIZE ; j++) {
             if(isValid(k,j))
                 return j;
