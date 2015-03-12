@@ -7,7 +7,7 @@ import java.util.TreeMap;
 /**
  * Created by Gurkan on 12.03.2015.
  */
-public class CountOccurenceOfWords {
+public class CountOccurrenceOfWords {
     public static void main(String[] args) {
         String text = "Good morning. Have a good class." + "Have a good visit. Have Fun!";
         Map<String , Integer> map = new TreeMap<>();
@@ -17,7 +17,7 @@ public class CountOccurenceOfWords {
             String key = words[i].toLowerCase();
 
             if(key.length()>0){
-                if(map.containsKey(key))
+                if(!map.containsKey(key))
                     map.put(key,1);
             }
             else {
