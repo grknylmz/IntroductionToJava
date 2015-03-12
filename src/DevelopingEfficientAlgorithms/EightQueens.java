@@ -34,7 +34,7 @@ public class EightQueens extends Application {
             }
 
 
-        Image image = new Image("C:\\Users\\Gurkan\\IdeaProjects\\IntroductionToJava\\src\\DevelopingEfficientAlgorithms\\queen.png");
+        Image image = new Image("queen.png");
         for (int i = 0; i < SIZE; i++)
             labels[i][queens[i]].setGraphic(new ImageView(image));
 
