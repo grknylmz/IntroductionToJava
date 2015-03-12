@@ -26,18 +26,19 @@ public class EightQueens extends Application{
         chessBoard.setAlignment(Pos.CENTER);
         Label[][] labels = new Label[SIZE][SIZE];
 
-        for (int i = 0; i < SIZE ; i++) {
+        for (int i = 0; i < SIZE ; i++)
             for (int j = 0; j < SIZE ; j++) {
                 chessBoard.add(labels[i][j] = new Label(),j,i);
                 labels[i][j].setStyle("-fx-border-color: black");
                 labels[i][j].setPrefSize(55,55);
             }
-        }
+
 
         Image image = new Image("C:\\Users\\Gurkan\\IdeaProjects\\IntroductionToJava\\src\\DevelopingEfficientAlgorithms\\queen.png");
-        for (int i = 0; i < SIZE; i++) {
+        for (int i = 0; i < SIZE; i++)
             labels[i][queens[i]].setGraphic(new ImageView(image));
-        }
+
+
 
         Scene scene = new Scene(chessBoard,55*SIZE,55*SIZE);
         primaryStage.setScene(scene);
@@ -70,20 +71,17 @@ public class EightQueens extends Application{
 
     public int findPosition(int k){
         int start = queens[k] + 1;
+
         for (int j = start; j < SIZE ; j++) {
             if(isValid(k,j))
                 return j;
-            return -1;
-
         }
-
         return -1;
-
     }
 
 
     public boolean isValid(int row,int column){
-        for (int i = 0; i < row; i++)
+        for (int i = 0; i <= row; i++)
             if(queens[row- i] == column || queens[row- i] == column-i || queens[row- i] == column+i )
                 return false;
         return true;
