@@ -14,7 +14,7 @@ import javafx.scene.image.ImageView;
 /**
  * Created by Gurkan on 12.03.2015.
  */
-public class EightQueens extends Application{
+public class EightQueens extends Application {
     private int[] queens = {-1,-1,-1,-1,-1,-1,-1,-1};
     public static final int SIZE= 8;
 
@@ -81,9 +81,11 @@ public class EightQueens extends Application{
 
 
     public boolean isValid(int row,int column){
-        for (int i = 0; i <= row; i++)
-            if(queens[row- i] == column || queens[row- i] == column-i || queens[row- i] == column+i )
+        for (int i = 1; i <= row; i++) {
+            if (queens[row - i] == column || queens[row - i] == column - i || queens[row - i] == column + i)
+
                 return false;
+        }
         return true;
     }
 }
