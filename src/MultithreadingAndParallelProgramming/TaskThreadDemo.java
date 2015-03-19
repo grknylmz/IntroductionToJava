@@ -7,8 +7,8 @@ public class TaskThreadDemo {
     public static void main(String[] args) {
 
 
-        Runnable printA = new PrintChar('a' , 100);
-        Runnable printB = new PrintChar('b' , 100);
+        Runnable printA = new PrintChar('a' , 10000);
+        Runnable printB = new PrintChar('b' , 10000);
         Runnable print100 = new PrintNum(100);
 
         Thread thread1 = new Thread(printA);
@@ -37,7 +37,7 @@ class PrintChar implements Runnable{
     @Override
     public void run(){
         for (int i = 0; i < times; i++) {
-            System.out.println(charToPrint);
+            System.out.print(charToPrint);
         }
     }
 }
@@ -54,7 +54,7 @@ class PrintNum implements Runnable{
     @Override
     public void run(){
         for (int i = 0; i <= lastNum; i++) {
-            System.out.println(" " + i);
+            System.out.print(" " + i);
         }
     }
 }
