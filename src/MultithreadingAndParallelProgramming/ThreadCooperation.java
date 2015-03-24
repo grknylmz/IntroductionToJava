@@ -14,6 +14,9 @@ public class ThreadCooperation {
 
     public static void main(String[] args) {
         ExecutorService executor = Executors.newFixedThreadPool(2);
+        executor.execute(new DepositTask());
+        executor.execute(new WithdrawTask());
+        executor.shutdown();
     }
 
 
