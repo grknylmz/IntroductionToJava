@@ -31,7 +31,17 @@ public class ConsumerProducer {
             catch (InterruptedException ex){
                 ex.printStackTrace();
             }
+        }
+    }
 
+    private static class ConsumerTask implements Runnable{
+        public void run(){
+            try {
+                while (true){
+                    System.out.println("\t\t\t Consumer reads " + buffer.read());
+                    Thread.sleep();
+                }
+            }
         }
     }
 }
