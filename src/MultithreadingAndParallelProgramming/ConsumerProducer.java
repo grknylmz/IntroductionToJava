@@ -14,7 +14,24 @@ public class ConsumerProducer {
         executor.execute(new ProducerTask());
         executor.execute(new ConsumerTask());
         executor.shutdown();
-
     }
 
+    private static class ProducerTask implements Runnable{
+        public void run(){
+            try {
+                int i = 1;
+                while (true){
+                    System.out.println("Producer writes " + i );
+                    buffer.write(i++);
+
+                    Thread.sleep((int)(Math.random()*10000));
+
+                }
+            }
+            catch (InterruptedException ex){
+                ex.printStackTrace();
+            }
+
+        }
+    }
 }
