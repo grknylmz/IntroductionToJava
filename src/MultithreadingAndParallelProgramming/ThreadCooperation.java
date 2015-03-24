@@ -17,6 +17,8 @@ public class ThreadCooperation {
         executor.execute(new DepositTask());
         executor.execute(new WithdrawTask());
         executor.shutdown();
+
+        System.out.println("Thread 1\t\t Thread 2\t\t Balance: ");
     }
 
 
@@ -24,8 +26,10 @@ public class ThreadCooperation {
         @Override
         public void run(){
             try{
+                while (true){
                 account.deposit((int) (Math.random()*10)+1);
                 Thread.sleep(1000);
+                }
             }
             catch (InterruptedException ex){
                 ex.printStackTrace();
@@ -56,10 +60,11 @@ public class ThreadCooperation {
 
 
         public void withdraw(int amount) {
+            lock.lock();
             try {
                 while (balance < amount) {
                     System.out.println("\t\t\t Wait for deposit : ");
-                    newDeposit.wait();
+                    newDeposit.await();
                 }
                 balance -= amount;
                 System.out.println("\t\t\tWithdraw " + amount + "\t\t" + getBalance());
@@ -67,7 +72,7 @@ public class ThreadCooperation {
                 ex.printStackTrace();
 
             } finally {
-                lock.lock();
+                lock.unlock();
             }
         }
 
